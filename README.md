@@ -1,18 +1,18 @@
 #1
-
-pip install flask 
-
-#2
 from flask import Flask
 
 app = Flask(__name__)
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+@app.route("/api/register/",  methods=['POST'])
+
+def api():
+    emilia = request.json
+    correu = emilia['email']
+    resultat = register_get_token(correu)
+    return resultat+'\n'
+
+#2
+flask --app app run OR flask --app app run --debug
 
 #3
-flask --app hello run OR flask --app hello run --debug
-
-#4
 Ctrl+C -> STOP
