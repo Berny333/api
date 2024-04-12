@@ -14,9 +14,10 @@ def show_form():
 @app.route("/gracies/", methods=["POST"])
 def procesar():
     emilia = request.form.get("email")
+    result = None
     result = register_get_token(emilia)
-    if result == 'Correu registrat correctament':
-        return render_template("gracies.html", resposta = emilia)
+    if result != None:
+        return render_template("gracies.html", emilia = emilia, token = result)
     else:
         return render_template("error.html", resposta = result)
 
